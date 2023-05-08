@@ -18,13 +18,79 @@ public class Main {
 
         char[] stars = new char[hiddenWord.length()];
 
-        Arrays.fill(stars, '*');
-        int count = 5;
+        ArrayList<String[]> pictures = new ArrayList<>(Arrays.asList(
+                new String[] {
+                        "  +----+\n",
+                        "  |    |\n",
+                        "       |\n",
+                        "       |\n",
+                        "       |\n",
+                        "       |\n",
+                        "=========\n"
+                },
+                new String[] {
+                        "  +----+\n",
+                        "  |    |\n",
+                        "  O    |\n",
+                        "       |\n",
+                        "       |\n",
+                        "       |\n",
+                        "=========\n"
+                },
+                new String[] {
+                        "  +----+\n",
+                        "  |    |\n",
+                        "  O    |\n",
+                        "  |    |\n",
+                        "       |\n",
+                        "       |\n",
+                        "=========\n"
+                },
+                new String[] {
+                        "  +----+\n",
+                        "  |    |\n",
+                        "  O    |\n",
+                        " /|    |\n",
+                        "       |\n",
+                        "       |\n",
+                        "=========\n"
+                },
+                new String[] {
+                        "  +----+\n",
+                        "  |    |\n",
+                        "  O    |\n",
+                        " /|\\   |\n",
+                        "       |\n",
+                        "       |\n",
+                        "=========\n"
+                },
+                new String[] {
+                        "  +----+\n",
+                        "  |    |\n",
+                        "  O    |\n",
+                        " /|\\   |\n",
+                        " /     |\n",
+                        "       |\n",
+                        "=========\n"
+                },
+                new String[] {
+                        "  +----+\n",
+                        "  |    |\n",
+                        "  O    |\n",
+                        " /|\\   |\n",
+                        " / \\   |\n",
+                        "       |\n",
+                        "=========\n"
+                }
+        ));
 
-        while (count < 6) {
+        Arrays.fill(stars, '*');
+        int count = 7;
+
+        while (count < 8) {
             System.out.println("The word is: " + String.valueOf(stars));
 
-            System.out.print("Introduceti o litera ");
+            System.out.print("Input a letter ");
             char letter = sc.next().charAt(0);
             boolean isLetterFound = false;
 
@@ -37,12 +103,18 @@ public class Main {
 
             if (!isLetterFound) {
                 count--;
+
+                System.out.println("Letter not Found! ");
+                System.out.println("You have " + count + " lives ");
+                for (String element : pictures.get(0)){
+                    System.out.println(element);
+                }
+                pictures.remove(0);
+
                 if ( count < 1){
                     System.out.println("Game Over");
                     break;
                 }
-                System.out.println("Letter not Found! ");
-                System.out.println("You have " + count + " lives ");
             }
 
             if (hiddenWord.equalsIgnoreCase(String.valueOf(stars))) {
